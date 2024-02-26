@@ -13,7 +13,7 @@
 		</h1>
 
 		<p>
-			<strong>Your Name</strong> — <em>Your MIT Email Address</em>
+			<strong>Aaron Wubshet</strong> — <em>awubshet@mit.edu</em>
 		</p>
 	</header>
 
@@ -22,9 +22,9 @@
 			<h2>Phase One: Sketching Visualizations</h2>
 
       <figure>
-				<img src="IMAGE_FILENAME" alt="" />
+				<img src="sketch1.jpeg" alt="" style="width: 75%;"/>
 				<figcaption>
-					BRIEF CAPTION HERE.
+					Figure 1 shows the US population distribution by age and gender in 1900 and 2000 with a general trend of more people being older by the year 2000.
 				</figcaption>
 			</figure>
 
@@ -33,15 +33,15 @@
 			</p>
 
 			<ul>
-				<li>RATIONALE_1</li>
-				<li>RATIONALE_2</li>
-				<li>RATIONALE_3</li>
+				<li>This box and whisker plot allows all 3 variables (age, gender, and year) to have some representation in the visualization. It primarily highlights the spread of age across the population.</li>
+				<li>I included some shading to make it easier to compare Male and Female boxes and to hopefully emphasis that a majority of the population regardless of the cross segment of year and gender resides within the box.</li>
+				<li>While it can be hard to read a chart like this, I've included a legend and quick how to read portion in the corner to give the viewer an overview. The other major limitation is there is no sense of scale of the overall population size just distribution.</li>
 			</ul>
 
       <figure>
-				<img src="IMAGE_FILENAME" alt="" />
+				<img src="sketch2.jpeg" style="width: 75%;" alt="" />
 				<figcaption>
-          BRIEF CAPTION HERE.
+					Figure 2 shows the US population distribution histogram by age in 1900 and then a curve of the data for 2000.
 				</figcaption>
 			</figure>
 
@@ -50,15 +50,15 @@
 			</p>
 
 			<ul>
-				<li>RATIONALE_1</li>
-				<li>RATIONALE_2</li>
-				<li>RATIONALE_3</li>
+				<li>This design allows for the scale of the population increase to be more easily read off the chart (bigger curve = more people). However, this comes at the cost of having a mixed symbol chart with bars being used in 1900 and a curve in 2000. I made this decision because the idea of having another set of bars on the same axis, even if I used shading or color to try to distinguish them, felt like it would be more confusing.</li>
+				<li>This plot also more clearly shows where the spikes and valleys are within different age groups (e.g, maybe there are a lot of 20-25 year olds, but maybe an uptick of 30-35 year olds). This finely grained binning would provide more insight into the distribution specifics. </li>
+				<li>I also believe in this form, the data more clearly illustrates the change in spread between 1900 and 2000 which could be even more exaggerated/highlighted with shading/color or a key calculation or metric in the title.</li>
 			</ul>
 
       <figure>
-				<img src="IMAGE_FILENAME" alt="" />
+				<img src="sketch3.jpeg" style="width: 75%;" alt="" />
 				<figcaption>
-          BRIEF CAPTION HERE.
+          		Comparative bar chart of 1900 and 2000 US population distribution overall, then by gender, then by age.
 				</figcaption>
 			</figure>
 
@@ -67,15 +67,17 @@
 			</p>
 
 			<ul>
-				<li>RATIONALE_1</li>
-				<li>RATIONALE_2</li>
-				<li>RATIONALE_3</li>
+				<li>This visualization is also relatively comprehensive with bars for each year-age group or year-gender group which helps decompose the overall trend by potential constituent sub-trends in the demographics. </li>
+				<li>The chart is able to capture the overall population increase as well as increases or decreases in different subgroups, but due to limited space, it can't capture every combination and so can't answer questions like "Did the number of male 20-25 year olds increase or decrease from 1900 to 2000?"</li>
+				<li>The shading and color boundaries would help readability of the different subgraphs, but the common y axis will make the plots further to the right look smaller and smaller and thus harder to differentiate. There is also likely a concern with the age binning that I did on top of the default age groupings. This was to also make the most out of the space available without having a huge chart.</li>
 			</ul>
 
       <h3>Reflection</h3>
 
       <p>
-        WRITE REFLECTION ON ALL 3 SKETCHES HERE.
+		
+		Each design comes with trade offs. For example, sketch 1 is able to provide a lot of descriptive statistics information for male and female populations in 1900 and 2000 with regard to what the spread of the population was. However, it may not be the most straight forward to read and understand. Sketch 2 is able to provide a clear visual of the population increase and the spread of the population across age groups, but the use of both a curve and bars may also be confusing. Sketch 3 is able to provide a clear visual of the population increase and tries to breakdown which groups are contributing to that increase, but does not do a good job once the delta between years gets too small. A percentage or normalized axis in some way may have been useful to alleviate those issues. 
+		Ultimately, I think the first visualization provides the most information with the least amount of compromises and caveats. The major presupposition would be the familiarity of the box and whisker plots to the reader.
       </p>
 
 		</section>
@@ -84,9 +86,9 @@
 			<h2>Phase Two: Final Design</h2>
 
 			<figure>
-				<img src="IMAGE_FILENAME" alt="" />
+				<img src="finalplot.jpg" style="width: 75%;" alt="" />
 				<figcaption>
-				ENTER IMAGE CAPTION HERE.
+				This plot captures the quartile ranges for each year-gender combination.
 				</figcaption>
 			</figure>
 		</section>
@@ -95,14 +97,21 @@
 			<h2>Design Process & Design Decisions</h2>
 
 			<p>
-        DESCRIBE YOUR DESIGN PROCESS AND DECISION DECISIONS HERE.
+        I decided that I wanted to create a set of box and whisker plots to describe the population distribution across time, age, and gender. So after tinkering in Tableau, I was able to create the image below:
+		<figure>
+			<img src="cleanbutwrong.png" style="width: 75%;" alt="" />
+			<figcaption>
+			This plot captures the quartile ranges for each year-gender combination.
+			</figcaption>
+		</figure>
+		However, this plot is not correct. The data provided is in the form of a frequency table with each category (i.e, age) having a count of people associated with that category. The box and whisker plot is designed to capture the quartile ranges of a continuous variable. So, I had to pivot my approach and try to find a way to calculate the quartile and median values from a frequency table. From there I would be able to create a box and whisker plot but the trade off would be a more rudimentary visualization. While the data to ink ratio is probably quite good, it does lack a bit of the visual appeal of the original box and whisker plot. Unfolding the data to have an individual record for each person would have fixed the problem, but that would result in hundreds of millions of records and would be impractical to work with. I considered pivoting to a different visualization, similar to one we saw in lecture where each column was a sideways continuous histogram, but this would have been a bit too complex for the data and would have been hard to read. Ultimately, I was able to find a free online tool (https://www.imathas.com/stattools/boxplot.html) that took in the raw values for Q1, median, Q2, min, and max and generated the box plots, though I still had to calculate the quartiles myself.
       </p>
 
 
       <h3>Reflection</h3>
 
       <p>
-        WRITE YOUR FINAL REFLECTION HERE.
+        I set out to create a simple and easy to read plot that would demonstrate the shifting distribution of people by age and gender from 1900 to 2000. I think having multiple colors or shading that don't encode a new dimension of the data end up being distracting and thus I chose to keep the plot in black and white (with a high data to ink ratio). I included the year and gender in the title above each plot as well as ensured the axis labels were aligned across all four box and whisker plots. This makes comparasions across the plots quick and easy as well as clear which plot is which with both 1900 plots first and then the 2000 plots. The repeated axis with age labels makes reading off values from any of the 4 plots very quick also. I did consider adding a data row or column to call out or annotate the total population growth or value for each of the plots, but this would have cluttered the space I believe. I debated having the plot begin at 0 since the axis is age, however, I think the visual appeal of centering the plot slightly by having the axis begin at -10 is worth the trade off.
       </p>
 		</section>
 	</main>
